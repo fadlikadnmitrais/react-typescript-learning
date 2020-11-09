@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import './NewTodo.css';
 
@@ -7,6 +7,9 @@ type NewTodoProps = {
 };
 
 const NewTodo: React.FC<NewTodoProps> = props => {
+  // useEffect();
+
+
   const textInputRef = useRef<HTMLInputElement>(null);
 
   const todoSubmitHandler = (event: React.FormEvent) => {
