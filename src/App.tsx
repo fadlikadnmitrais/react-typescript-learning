@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
-// import { Route } from 'react-router-dom';
+import React from 'react';
+import "./App.css";
+import { ThemeProvider } from "@chakra-ui/core";
+import customTheme from "./theme";
+import { Provider } from "react-redux";
+import { ApplicationState } from "./store";
+import { Store } from "redux";
+import { History } from "history";
+import { ConnectedRouter } from "connected-react-router";
+import Routes from "./routes";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import TodoList from './components/TodoList';
-import NewTodo from './components/NewTodo';
-import { Todo } from './todo.model';
+interface MainProps {
+  store: Store<ApplicationState>;
+  history: History;
+}
 
-
-const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const todoAddHandler = (text: string) => {
-    setTodos(prevTodos => [
-      ...prevTodos,
-      {id: Math.random().toString(), text: text}
-    ]);
-  };
-
-  const todoDeleteHandler = (todoId: string) => {
-    setTodos(prevTodos => {
-      return prevTodos.filter(todo => todo.id !== todoId);
-    });
-  };
-
+const App: React.FC<MainProps> = ({ store, history }) => {
   return (
-    <div className="App">
-      <NewTodo onAddTodo={todoAddHandler}/>
-      {/* A component that adds todos */}
-      <TodoList items={todos} onDeleteTodo={todoDeleteHandler}/>
-    </div>
+    <Provider store={store}>
+      <ThemeProvider theme={customTheme}>
+        <ConnectedRouter history={history}>
+            <Router>
+                <Routes/>
+            </Router>
+        </ConnectedRouter>
+      </ThemeProvider>
+    </Provider>
   );
 };
 
