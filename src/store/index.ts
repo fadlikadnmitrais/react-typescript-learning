@@ -10,6 +10,9 @@ import { cartReducer } from "./cart/reducer";
 import { cartState } from "./cart/types";
 import { RouterState } from "connected-react-router";
 
+import { userReducer } from "./modules/user";
+import { productsReducer } from "./modules/product";
+
 export interface ApplicationState {
     cart: cartState;
     inventory: InventoryState;
@@ -20,6 +23,15 @@ export const createRootReducer = (history: History) =>
     combineReducers({
         cart: cartReducer,
         inventory: InventoryReducer,
+        user: userReducer,
+        products: productsReducer,
         router: connectRouter(history),
     });
+
+export const rootReducer = combineReducers({
+    user: userReducer,
+    products: productsReducer,
+});
+
+export type RootState = ReturnType<typeof rootReducer>;
 

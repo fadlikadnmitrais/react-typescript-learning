@@ -9,6 +9,7 @@ import { History } from "history";
 import { ConnectedRouter } from "connected-react-router";
 import Routes from "./routes";
 import { BrowserRouter as Router } from "react-router-dom";
+import "semantic-ui-css/semantic.min.css";
 
 interface MainProps {
   store: Store<ApplicationState>;

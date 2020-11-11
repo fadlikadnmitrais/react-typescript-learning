@@ -22,7 +22,7 @@ const NavHeader = styled.div`
 `;
 
 const NavCart = styled.div`
-    width: 20%;
+    width: 10%;
     float: right;
     padding: 10px;
     cursor: pointer;
@@ -59,6 +59,31 @@ const Navbar: React.FC<AllProps> = ({ data, loading, errors, children }) => {
                 <NavCart>
                     <Link to="/cart">
                         Cart <CartSpan>{data.items.length}</CartSpan>
+                    </Link>
+                </NavCart>
+                <NavCart>
+                    <Link to="/profile">
+                        Profile
+                    </Link>
+                </NavCart>
+                <NavCart>
+                    <Link to="/todo">
+                        To Do
+                    </Link>
+                </NavCart>
+                <NavCart>
+                    <Link to="/shop">
+                        Shop
+                    </Link>
+                </NavCart>
+                <NavCart>
+                    <Link to="/cart2">
+                        Cart2
+                    </Link>
+                </NavCart>
+                <NavCart>
+                    <Link to="/login">
+                        Login
                     </Link>
                 </NavCart>
             </NavContainer>
