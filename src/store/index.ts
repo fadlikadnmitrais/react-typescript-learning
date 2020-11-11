@@ -25,7 +25,7 @@ export const createRootReducer = (history: History) =>
         inventory: InventoryReducer,
         user: userReducer,
         products: productsReducer,
-        router: connectRouter(history),
+        // router: connectRouter(history),
     });
 
 export const rootReducer = combineReducers({
