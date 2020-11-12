@@ -11,3 +11,5 @@
 
 - Setup Persisted Storage with redux : https://levelup.gitconnected.com/persisting-your-react-application-state-with-redux-and-typescript-51e4e66c4e53
 - Lib to set persisted storage : https://github.com/rt2zz/redux-persist
+
+- Setup Redux DevTools to work with Typescript : https://www.mydatahack.com/getting-redux-devtools-to-work-with-typescript/
