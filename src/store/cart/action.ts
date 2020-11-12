@@ -1,6 +1,6 @@
 import { CartActionTypes, Cart, cartState } from "./types";
 import { Inventory } from "../inventory/types";
-import { ActionCreator, Action, Dispatch } from "redux";
+import { ActionCreator, Action, Dispatch, AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { ApplicationState } from "../index";
 export type AppThunk = ThunkAction<
@@ -45,3 +45,22 @@ export const addToCart: ActionCreator<ThunkAction<
         }
     };
 };
+
+export const removeFromCart: ActionCreator<ThunkAction<
+    void,
+    ApplicationState,
+    Inventory,
+    Action<string>
+>> = item => {
+    return (dispatch: Dispatch): Action => {
+        try {
+            return dispatch({
+                type: CartActionTypes.REMOVE_FROM_CART,
+                payload: item
+            });
+        } catch (e) {
+            console.log(e);
+            return e;
+        }
+    }
+}

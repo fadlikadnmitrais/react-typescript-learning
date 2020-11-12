@@ -39,7 +39,7 @@ const ProductDescriptionDiv = styled.div`
     justify-content: space-between;
 `;
 
-const ProductBrandText = styled.text``;
+const ProductBrandText = styled.div``;
 
 const AddToCart = styled.button`
     padding: 10px;
@@ -77,7 +77,9 @@ const ProductItem: React.FC<Props> = ({ item, addToCart }) => {
     );
 };
 
-const mapStateToProps = () => {};
+const mapStateToProps = () => {
+    return {};
+};
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
     return {

@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 
 import { ApplicationState } from "../../store";
 import { Cart } from "../../store/cart/types";
+import { removeFromCart } from "../../store/cart/action";
+import { Inventory } from "../../store/inventory/types";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
 
 const CartContainer = styled.div`
     /* height: 100%;
@@ -36,13 +40,28 @@ const CartListItemName = styled.p``;
 
 const CartListItemPrice = styled.p``;
 
+const RemoveFromCart = styled.button`
+    padding: 10px;
+    background-color: red;
+    color: #ffffff;
+    border-radius: 10px;
+`;
+
 interface propsFromState {
     cartItems: Cart;
 }
 
-type AllProps = propsFromState;
+interface propsFromDispatch {
+    removeFromCart: (item: Inventory) => any;
+}
 
-const CartComponent: React.FC<AllProps> = ({ cartItems }) => {
+type AllProps = propsFromState & propsFromDispatch;
+
+const CartComponent: React.FC<AllProps> = ({ cartItems, removeFromCart }) => {
+    const RemoveItemFromCartAction = (item: Inventory) => {
+        removeFromCart(item);
+    }
+
     console.log("cartItems", cartItems);
     return (
         <CartContainer>
@@ -50,12 +69,13 @@ const CartComponent: React.FC<AllProps> = ({ cartItems }) => {
                 <CartHeader>Your Cart</CartHeader>
             </CartHeaderDiv>
             <CartListsDiv>
-                {cartItems.items.map(item => {
+                {cartItems.items.map((item, index) => {
                     return (
-                        <CartListItemDiv>
+                        <CartListItemDiv key={`${item.id}-${index}`}>
                             <CartListItemImage src={item.image} />
                             <CartListItemName>{item.name}</CartListItemName>
                             <CartListItemPrice>{item.price}</CartListItemPrice>
+                            <RemoveFromCart onClick={() => RemoveItemFromCartAction(item)}>Remove from Cart</RemoveFromCart>
                         </CartListItemDiv>
                     );
                 })}
@@ -68,6 +88,10 @@ const mapStateToProps = ({ cart }: ApplicationState) => ({
     cartItems: cart.data
 });
 
-const mapDispatchProps = () => {};
+const mapDispatchProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
+    return {
+        removeFromCart: (item: Inventory) => dispatch(removeFromCart(item))
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchProps)(CartComponent);

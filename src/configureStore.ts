@@ -1,4 +1,4 @@
-import { Store, createStore, applyMiddleware } from "redux";
+import { Store, createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { routerMiddleware } from "connected-react-router";
 import { History } from "history";
@@ -12,10 +12,20 @@ const persistConfig = {
     storage,
 };
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
 export default function configureStore(
     history: History,
     initialState: ApplicationState
 ): { store: Store<ApplicationState>, persistor: Persistor } {
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
     /**
      * With Persisted Redux
      */
@@ -23,7 +33,7 @@ export default function configureStore(
     const store = createStore(
         persistedReducer,
         initialState,
-        applyMiddleware(routerMiddleware(history), thunk)
+        composeEnhancers(applyMiddleware(routerMiddleware(history), thunk))
     );
 
     const persistor = persistStore(store);

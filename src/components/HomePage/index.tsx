@@ -47,7 +47,7 @@ const HomePage: React.FC<AllProps> = ({
             {/* <Navbar/>   */}
             <ProductListItems>
                 {data.map(item => {
-                    return <ProductItem item={item} />;
+                    return <ProductItem key={item.id} item={item} />;
                 })}
             </ProductListItems>
         </Container>

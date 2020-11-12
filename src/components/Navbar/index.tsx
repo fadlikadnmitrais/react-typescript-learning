@@ -98,6 +98,8 @@ const mapStateToProps = ({ cart }: ApplicationState) => ({
     errors: cart.errors,
 });
 
-const mapDispatchProps = () => {};
+const mapDispatchProps = () => {
+    return {};
+};
 
 export default connect(mapStateToProps, mapDispatchProps)(Navbar);
