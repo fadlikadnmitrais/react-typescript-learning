@@ -5,14 +5,15 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { createBrowserHistory } from "history";
 import configureStore from "./configureStore";
+
 const history = createBrowserHistory();
 
 const initialState: any = {};
-const store = configureStore(history, initialState);
+const { store, persistor } = configureStore(history, initialState);
 
 ReactDOM.render(
   // <React.StrictMode>
-    <App store={store} history={history} />,
+    <App store={store} persistor={persistor} history={history} />,
   // </React.StrictMode>,
   document.getElementById('root')
 );
