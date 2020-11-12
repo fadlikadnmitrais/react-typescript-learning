@@ -8,3 +8,6 @@
 - Repo : https://github.com/nas5w/ts-redux
 
 - Stateful component with typescript : https://codebrains.io/stateful-react-components-with-typescript/ 
+
+- Setup Persisted Storage with redux : https://levelup.gitconnected.com/persisting-your-react-application-state-with-redux-and-typescript-51e4e66c4e53
+- Lib to set persisted storage : https://github.com/rt2zz/redux-persist
