@@ -86,6 +86,11 @@ const Navbar: React.FC<AllProps> = ({ data, loading, errors, children }) => {
                         Login
                     </Link>
                 </NavCart>
+                <NavCart>
+                    <Link to="/user">
+                        User
+                    </Link>
+                </NavCart>
             </NavContainer>
             {children}
         </div>

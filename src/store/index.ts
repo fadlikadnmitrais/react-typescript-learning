@@ -12,6 +12,7 @@ import { RouterState } from "connected-react-router";
 
 import { userReducer } from "./modules/user";
 import { productsReducer } from "./modules/product";
+import userFormReducer from "./userForm/reducer";
 
 export interface ApplicationState {
     cart: cartState;
@@ -25,6 +26,7 @@ export const createRootReducer = (history: History) =>
         inventory: InventoryReducer,
         user: userReducer,
         products: productsReducer,
+        userForm: userFormReducer,
         router: connectRouter(history),
     });
 

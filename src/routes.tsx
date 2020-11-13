@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import {Shop} from "./components/Shop/Shop";
 import {Cart2} from "./components/Cart2/Cart2";
 import {Login} from "./components/Auth/Login";
+import User from "./containers/Users";
 
 const Routes: React.SFC = () => (
     <div>
@@ -22,6 +23,7 @@ const Routes: React.SFC = () => (
             <Route path="/shop" render={() => ( <Navbar><Shop/></Navbar>)} />
             <Route path="/cart2" render={() => ( <Navbar><Cart2/></Navbar>)} />
             <Route path="/login" render={() => ( <Navbar><Login/></Navbar>)}/>
+            <Route path="/user" render={() => ( <Navbar><User/></Navbar>)}/>
 
         </Switch>
     </div>
